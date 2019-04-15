@@ -1,6 +1,4 @@
 FROM catatnight/postfix
+RUN apt-get install python-software-properties -y && add-apt-repository ppa:ondrej/php-7.0
 RUN apt-get update
-RUN apt-get install -y php5-cli
-RUN apt-get install -y php5-dev
-RUN apt-get -y install gcc g++ make autoconf libc-dev pkg-config
-RUN pecl install mailparse-2.1.6
+RUN apt-get install php7.0
