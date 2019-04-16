@@ -1,10 +1,9 @@
 FROM catatnight/postfix
 
-RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu trusty main" | tee -a /etc/apt/sources.list && \
-    echo "deb-src http://ppa.launchpad.net/ondrej/php/ubuntu trusty main" | tee -a /etc/apt/sources.list && \
-    gpg --keyserver pool.sks-keyservers.net --recv E5267A6C && \
-    gpg --export --armor E5267A6C | apt-key add -
+export LANG=C.UTF-8
+
+RUN apt install -y software-properties-common
+RUN add-apt-repository ppa:ondrej/php
 
 RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y --no-install-recommends php-cli
+    apt-get install -y php-cli php-curl
