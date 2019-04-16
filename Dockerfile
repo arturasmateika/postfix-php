@@ -1,6 +1,7 @@
 FROM catatnight/postfix
 
-export LANG=C.UTF-8
+ENV LANG C.UTF-8
+ENV LC_ALL C.UTF-8
 
 RUN apt install -y software-properties-common
 RUN add-apt-repository ppa:ondrej/php
