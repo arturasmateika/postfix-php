@@ -17,6 +17,5 @@ RUN apt-get install php-pear
 
 # tweak mbstring
 RUN cp /usr/include/php/20180731/ext/mbstring/libmbfl/mbfl/mbfilter.h . && \
-    awk '/#define HAVE_MBSTRING 1";' \
+    awk '/#define MBFL_MBFILTER_H/{print;print "#undef HAVE_MBSTRING\n#define HAVE_MBSTRING 1";next}1' \
     mbfilter.h > /usr/include/php/20180731/ext/mbstring/libmbfl/mbfl/mbfilter.h
-
