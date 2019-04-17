@@ -15,7 +15,8 @@ RUN apt-get -y install gcc g++ make autoconf libc-dev pkg-config
 
 RUN apt-get install php-pear
 
-# tweak mbstring
-RUN cp /usr/include/php/20180731/ext/mbstring/libmbfl/mbfl/mbfilter.h . && \
-    awk '/#define MBFL_MBFILTER_H/{print;print "#undef HAVE_MBSTRING\n#define HAVE_MBSTRING 1";next}1' \
-    mbfilter.h > /usr/include/php/20180731/ext/mbstring/libmbfl/mbfl/mbfilter.h
+RUN echo "#define HAVE_MBSTRING 1" >> /usr/include/php/20180731/ext/mbstring/libmbfl/mbfl/mbfilter.h
+
+RUN pecl install mailparse
+
+RUN echo "extension=mailparse.so" >> /etc/php/7.3/php.ini
