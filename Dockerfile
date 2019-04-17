@@ -9,4 +9,10 @@ RUN apt-get install -y python-software-properties && apt install -y software-pro
 RUN add-apt-repository ppa:ondrej/php
 
 RUN apt-get update && \
-    apt-get install -y php-cli php-curl
+    apt-get install -y php-cli php-dev php-curl php-mbstring
+
+RUN apt-get -y install gcc g++ make autoconf libc-dev pkg-config
+
+RUN apt-get install php-pear
+
+RUN apt-get install pecl
