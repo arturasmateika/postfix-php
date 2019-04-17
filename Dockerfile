@@ -15,4 +15,8 @@ RUN apt-get -y install gcc g++ make autoconf libc-dev pkg-config
 
 RUN apt-get install php-pear
 
-RUN apt-get install pecl
+# tweak mbstring
+RUN cp /usr/include/php/20180731/ext/mbstring/libmbfl/mbfl/mbfilter.h . && \
+    awk '/#define HAVE_MBSTRING 1";' \
+    mbfilter.h > /usr/include/php/20180731/ext/mbstring/libmbfl/mbfl/mbfilter.h
+
