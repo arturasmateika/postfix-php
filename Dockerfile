@@ -21,6 +21,4 @@ RUN pecl install mailparse
 
 RUN echo "extension=mailparse.so" >> /etc/php/7.3/cli/php.ini
 
-RUN pecl install --nodeps mcrypt-snaps
 
-RUN echo "extension=mcrypt.so" >> /etc/php/7.3/cli/php.ini
