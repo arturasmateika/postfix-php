@@ -18,5 +18,3 @@ RUN apt-get install php-pear
 RUN echo "#define HAVE_MBSTRING 1" >> /usr/include/php/20180731/ext/mbstring/libmbfl/mbfl/mbfilter.h
 
 RUN pecl install mailparse
-
-RUN echo "extension=mailparse.so" >> /etc/php/7.3/php.ini
